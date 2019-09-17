@@ -4,8 +4,8 @@ const schema = `
 TYPE
 """
 type Post {
-    postId: String!,
     userId: String!,
+    postId: String!,
     caption: String!,
     dateUploaded: String!,
     postedBy: String!,
