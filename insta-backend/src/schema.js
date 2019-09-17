@@ -20,9 +20,9 @@ type Query {
 
     getAllPosts: [Post],
 
-    getUserPost(userId:String!, postId: String!): Post!,
+    getUserPost(userId: String!, postId: String!): Post!,
 
-    getAllUsersPosts(userId:String!):[Post!]!
+    getAllUsersPosts(userId: String!):[Post!]!
 }
 
 """
