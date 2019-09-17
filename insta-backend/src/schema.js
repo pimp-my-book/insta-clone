@@ -1,12 +1,38 @@
 const schema = `
 
-
+"""
+TYPE
+"""
+type Post {
+    postId: String!,
+    userId: String!,
+    caption: String!,
+    dateUploaded: String!,
+    postedBy: String!,
+    imageUrl: String!
+}
 
 """
-A hello world Query
+QUERY
 """
 type Query {
-     hello: String!
+    hello: String!,
+
+    getAllPosts: [Post]
+}
+
+"""
+MUTATION
+"""
+type Mutation {
+    createPost(
+        postId: String!,
+        userId: String!,
+        caption: String!,
+        dateUploaded: String!,
+        postedBy: String!,
+        imageUrl: String!
+    ): Post
 }
 
 `
