@@ -22,10 +22,17 @@ type Query {
 }
 
 """
-A hello world Query
+MUTATION
 """
-type Query {
-     hello: String!
+type Mutation {
+    createPost(
+        postId: String!,
+        userId: String!,
+        caption: String!,
+        dateUploaded: String!,
+        postedBy: String!,
+        imageUrl: String!
+    ): Post
 }
 
 `
