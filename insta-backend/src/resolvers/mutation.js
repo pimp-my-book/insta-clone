@@ -25,6 +25,6 @@ export const createPost = async (args, context) => {
         }
     }
     catch (e) {
-        console.log(e)
+        return e
     }
 }
