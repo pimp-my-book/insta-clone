@@ -65,6 +65,13 @@ functions:
           method: get 
           cors: true
           integration: lambda-proxy
+
 resources:
-  #DynamoDB
+  # DynamoDB
   - ${file(resources/configs/insta-clone-table.yml)}
+  # Cognito Userpool
+  - ${file(resources/cognito-user-pool.yml)}
+  # Cognito Identity Pool
+  - ${file(resources/cognito-identity-pool.yml)}
+  # S3 Bucket
+  - ${file(resources/configs/s3-bucket.yml)}
