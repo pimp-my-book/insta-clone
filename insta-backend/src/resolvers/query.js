@@ -52,3 +52,29 @@ export const getUserPost = async (args, context) => {
         return e
     }
 }
+
+export const getAllUsersPosts = async (args, context) => {
+    const params = {
+        TableName: process.env.InstaCloneTable,
+        KeyConditionExpression: "pk = :pk",
+        ExpressionAttributeValues: {
+            ":pk": args.userId
+        }
+    }
+    try {
+        const result = await dynamodbLib.call("query", params);
+        return result.Items.map((item) => (
+            {
+                userId: item.pk,
+                postId: item.sk,
+                caption: item.caption,
+                dateUploaded: item.dateUploaded,
+                postedBy: item.postedBy,
+                imageUrl: item.imageUrl
+            }
+        ))
+    }
+    catch (e) {
+        return e
+    }
+}
