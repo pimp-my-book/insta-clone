@@ -12,6 +12,14 @@ type Post {
     imageUrl: String!
 }
 
+"""
+QUERY
+"""
+type Query {
+    hello: String!,
+
+    getAllPosts: [Post]
+}
 
 """
 A hello world Query
