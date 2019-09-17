@@ -70,8 +70,8 @@ resources:
   # DynamoDB
   - ${file(resources/configs/insta-clone-table.yml)}
   # Cognito Userpool
-  - ${file(resources/configs/cognito-user-pool.yml)}
+  - ${file(resources/cognito-user-pool.yml)}
   # Cognito Identity Pool
-  - ${file(resources/configs/cognito-identity-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
   # S3 Bucket
   - ${file(resources/configs/s3-bucket.yml)}
