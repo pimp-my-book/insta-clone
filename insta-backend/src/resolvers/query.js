@@ -31,16 +31,16 @@ export const getUserPost = async (args, context) => {
     const params = {
         TableName: process.env.InstaCloneTable,
         Key: {
-            pk: args.postId,
-            sk: args.userId
+            pk: args.userId,
+            sk: args.postId
         }
     }
     try {
         const result = await dynamodbLib.call("get", params);
         console.log(result);
         return {
-                postId: result.Item.pk,
-                userId: result.Item.sk,
+                userId: result.Item.pk,
+                postId: result.Item.sk,
                 caption: result.Item.caption,
                 dateUploaded: result.Item.dateUploaded,
                 postedBy: result.Item.postedBy,
