@@ -18,7 +18,11 @@ QUERY
 type Query {
     hello: String!,
 
-    getAllPosts: [Post]
+    getAllPosts: [Post],
+
+    getUserPost(userId:String!, postId: String!): Post!,
+
+    getAllUsersPosts(userId:String!):[Post!]!
 }
 
 """
