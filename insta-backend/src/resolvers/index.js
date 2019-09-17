@@ -5,7 +5,8 @@ export const resolvers = {
     Query: {
         hello: (root, args, context) => hello(args, context),
         getAllPosts: (root, args, context) => getAllPosts(args, context),
-        getUserPost: (root, args, context) => getUserPost(args, context)
+        getUserPost: (root, args, context) => getUserPost(args, context),
+        getAllUsersPosts: (root, args, context) => getAllUsersPosts(args, context)
     },
     Mutation: {
         createPost: (root, args, context) => createPost(args, context)
