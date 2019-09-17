@@ -1,4 +1,4 @@
-import { hello, getAllPosts, getUserPost } from "./query";
+import { hello, getAllPosts, getUserPost, getAllUsersPosts } from "./query";
 import { createPost } from "./mutation";
 
 export const resolvers = {
