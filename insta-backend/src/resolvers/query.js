@@ -10,11 +10,10 @@ export const getAllPosts = async (args, context) => {
     }
     try {
         const result = await dynamodbLib.call("scan", params);
-        console.log(result);
         return result.Items.map((item) => (
             {
-                postId: item.pk,
-                userId: item.sk,
+                userId: item.pk,
+                postId: item.sk,
                 caption: item.caption,
                 dateUploaded: item.dateUploaded,
                 postedBy: item.postedBy,
