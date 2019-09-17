@@ -65,6 +65,7 @@ functions:
           method: get 
           cors: true
           integration: lambda-proxy
+
 resources:
   # DynamoDB
   - ${file(resources/configs/insta-clone-table.yml)}
