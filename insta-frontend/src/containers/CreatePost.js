@@ -5,6 +5,7 @@ import { Create_Post } from "../graphql/Mutations";
 import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from "@chakra-ui/core";
 import config from "../configs/config";
 
+const CreatePost = ( ) => {
     const [ postedBy, setPostedBy ] = useState("");
     const [ caption, setCaption ] = useState("");
     const [ imageUrl, setImageUrl ] = useState("");
@@ -102,3 +103,13 @@ import config from "../configs/config";
         )
     }
 
+    return (
+        <div>
+            {
+                Post()
+            }
+        </div>
+    );
+}
+
+export default CreatePost
