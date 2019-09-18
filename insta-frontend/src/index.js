@@ -47,5 +47,10 @@ const httpLink = createHttpLink({
     uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 });
 
+const client = new ApolloClient({
+    link: httpLink,
+    cache: new InMemoryCache()
+});
+
 
 serviceWorker.unregister();
