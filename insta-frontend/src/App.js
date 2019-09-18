@@ -25,10 +25,15 @@ class App extends Component {
     return (
       <ThemeProvider>
         <ColorModeProvider>
-            <Box justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
+            <Box display="flex" justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
               <Heading size="md" textAlign="center">
                 Insta-Clone<span role="img" aria-label="Camera">📸</span>
               </Heading>
+              <Link href="/Register" isInternal>
+                <Button size="md" alignItems="right">
+                  Login | Register
+                </Button>
+              </Link>
             </Box>
           <Routes childProps={ childProps }/>
         </ColorModeProvider>
