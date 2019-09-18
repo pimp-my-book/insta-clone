@@ -33,5 +33,15 @@ Amplify.configure({
 
 const stage = process.env.REACT_APP_STAGE === "prod";
 
+const authLink = setContext(async (_, { headers }) => {
+    const token = await Auth.currentSession();
+        return {
+            headers: {
+                ...headers,
+                Authorization: token ? ` Bearer ${ token.idToken.jwtToken } ` : null
+            }
+        }
+});
+
 
 serviceWorker.unregister();
