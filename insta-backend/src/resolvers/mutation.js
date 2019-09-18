@@ -5,8 +5,8 @@ export const createPost = async (args, context) => {
     const params = {
         TableName: process.env.InstaCloneTable,
         Item: {
-            pk: `postId-${uuid.v1()}`,
-            sk: `userId-${uuid.v1()}`, // Cognito Username
+            pk: `userId-${uuid.v1()}`, // Cognito Username
+            sk: `postId-${uuid.v1()}`,
             caption: args.caption,
             dateUploaded: Date.now(),
             postedBy: args.postedBy, // Username Cognito
@@ -16,8 +16,8 @@ export const createPost = async (args, context) => {
     try {
         await dynamodbLib.call("put", params);
         return {
-            postId: params.Item.pk,
-            userId: params.Item.sk,
+            userId: params.Item.pk,
+            postId: params.Item.sk,
             caption: args.caption,
             dateUploaded: params.Item.dateUploaded,
             postedBy: args.postedBy,
