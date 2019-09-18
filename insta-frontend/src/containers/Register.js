@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Auth from "@aws-amplify/auth";
 import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from "@chakra-ui/core";
 
+const Register = ( ) => {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ confirmationCode, setConfirmationCode ] = useState("");
@@ -98,3 +99,15 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
         )
     }
     
+    return (
+        <div>
+            {
+                newUser === null
+                ? RenderForm()
+                : RenderConfirmationForm()
+            }
+        </div>
+    );
+}
+
+export default Register
