@@ -7,4 +7,5 @@ import Register from "./containers/Register";
 export default ({ childProps }) =>
     <Switch>
         <AppliedRoute path="/" exact component={ Home } props={ childProps } />
+        <Route path="/Register" exact component={ Register } props={ childProps } />
     </Switch>
