@@ -47,6 +47,19 @@ const httpLink = createHttpLink({
     uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 });
 
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+    clientState: {
+        defaults: {},
+        resolvers: {}
+    },
+    onError: ({ networkError, graphQLErrors }) => {
+        console.log('graphQLErrors', graphQLErrors)
+        console.log('networkError', networkError)
+    }
+});
+
 ReactDOM.render(
     <Router>
         <App />
