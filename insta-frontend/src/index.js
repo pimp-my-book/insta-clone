@@ -31,6 +31,8 @@ Amplify.configure({
     }
 });
 
+const stage = process.env.REACT_APP_STAGE === "prod";
+
 ReactDOM.render(
     <Router>
         <App />
