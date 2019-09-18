@@ -20,3 +20,15 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
         }
     }
 
+    const handleConfirmationSubmit = async event => {
+        event.preventDefault();
+
+        try {
+            await Auth.confirmSignUp(username, confirmationCode);
+            await Auth.signIn(username, password)
+        }
+        catch (e) {
+            alert(e.message)
+        }
+    }
+
