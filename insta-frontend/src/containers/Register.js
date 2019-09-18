@@ -32,3 +32,41 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
         }
     }
 
+    const RenderForm = () => {
+        return(
+            <Box display="block" w="100%" pr="35%" pl="35%">
+                <Heading>Registration</Heading>
+                <FormControl size="md" onSubmit={ handleSubmit }>
+                    <FormLabel>Email Address</FormLabel>
+                        <Input 
+                            type="email" 
+                            id="email"
+                            value={ username }
+                            onChange = { e => setUsername( e.target.value ) }
+                            aria-describedby="email-helper-text" />
+                    <FormHelperText id="email-helper-text">
+                        Used for spamming purposes<span role="img" aria-label="Happy">😄</span>
+                    </FormHelperText>
+                    <FormLabel>Password</FormLabel>
+                        <Input 
+                        type="password" 
+                        id="password"
+                        value={ password } 
+                        onChange = { e => setPassword( e.target.value ) }
+                        aria-describedby="password-helper-text" />
+                    <FormHelperText id="password-helper-text">
+                        Used for stealing purposes<span role="img" aria-label="Happy">😄</span>
+                    </FormHelperText>
+                    <Button
+                        mt={4}
+                        bg="Black"
+                        color="White"
+                        type="submit"
+                    >
+                        Register
+                    </Button>
+                </FormControl>
+            </Box>
+        )
+    }
+
