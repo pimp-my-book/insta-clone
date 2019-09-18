@@ -27,7 +27,10 @@ class App extends Component {
         <ColorModeProvider>
             <Box display="flex" justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
               <Heading size="md" textAlign="center">
-                Insta-Clone<span role="img" aria-label="Camera">📸</span>
+                Insta-Clone
+                <Link href="/" isInternal>
+                  <span role="img" aria-label="Camera">📸</span>
+                </Link>
               </Heading>
               <Link href="/Register" isInternal>
                 <Button size="md" alignItems="right">
