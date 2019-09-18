@@ -7,3 +7,16 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
     const [ confirmationCode, setConfirmationCode ] = useState("");
     const [ newUser, setNewUser ] = useState(null);
 
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        try {
+            const newUser = await Auth.signUp(username, password);
+            console.log(newUser);
+            setNewUser(newUser)
+        }
+        catch (e) {
+            alert(e.message)
+        }
+    }
+
