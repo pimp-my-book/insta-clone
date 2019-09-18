@@ -70,3 +70,31 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
         )
     }
 
+    const RenderConfirmationForm = () => {
+        return(
+            <Box>
+                <Heading>Confirmation Code</Heading>
+                <FormControl onSubmit={ handleConfirmationSubmit }>
+                    <FormLabel>Enter Code Here</FormLabel>
+                        <Input
+                            type="text" 
+                            id="confirmationCode" 
+                            value={ confirmationCode } 
+                            onChange = { e => setConfirmationCode( e.target.value ) }
+                            aria-describedby="confirmationCode-helper-text" />
+                    <FormHelperText id="confirmationCode-helper-text">
+                        It's too late now<span role="img" aria-label="Happy">😄</span>
+                    </FormHelperText>
+                    <Button
+                        mt={4}
+                        bg="Black"
+                        color="White"
+                        type="submit"
+                    >
+                        Confirm Code
+                    </Button>
+                </FormControl>
+            </Box>
+        )
+    }
+    
