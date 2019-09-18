@@ -31,5 +31,7 @@ Amplify.configure({
     }
 });
 
+const stage = process.env.REACT_APP_STAGE === "prod";
+
 
 serviceWorker.unregister();
