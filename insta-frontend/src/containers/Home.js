@@ -9,6 +9,11 @@ export default class Home extends Component {
                     <Heading textAlign="center" size="md">
                         Insta-Clone
                     </Heading>
+                    <Link href="/CreatePost" isInternal>
+                        <Button>
+                            Create Post
+                        </Button>
+                    </Link>
                 </Box>
             </div>
         )
