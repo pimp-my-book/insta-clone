@@ -43,6 +43,10 @@ const authLink = setContext(async (_, { headers }) => {
         }
 });
 
+const httpLink = createHttpLink({
+    uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
+});
+
 ReactDOM.render(
     <Router>
         <App />
