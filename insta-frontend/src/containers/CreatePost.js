@@ -12,3 +12,8 @@ import config from "../configs/config";
     let [ file, setFile ] = useState(null);
     const [ mutateCreatePost, { data } ] = useMutation(Create_Post);
 
+    const handleFileChange = event => {
+        file = event.target.files[0];
+        alert("File added -_-")
+    }
+
