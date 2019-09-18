@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Box, Heading } from "@chakra-ui/core";
+import { Box, Link, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from "@chakra-ui/core";
 
 export default class Home extends Component {
     render() {
