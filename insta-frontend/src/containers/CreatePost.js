@@ -17,3 +17,28 @@ import config from "../configs/config";
         alert("File added -_-")
     }
 
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        if ( file && file.size > config.MAX_ATTACHMENT_SIZE ) {
+            alert(
+                `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE/1000000} MB.`
+            );
+            return;
+        }
+
+        setState(true);
+
+        try {
+            const attachment = file
+            ? await s3Upload(file)
+            : null;
+
+            setImageUrl(attachment)
+        }
+        catch (e) {
+            alert(e);
+            setState(false)
+        }
+    }
+
