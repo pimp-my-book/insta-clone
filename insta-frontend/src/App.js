@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { ThemeProvider, ColorModeProvider } from "@chakra-ui/core";
-import { Box, Heading } from "@chakra-ui/core";
+import { Link, Box, Heading, Button } from "@chakra-ui/core";
 import Routes from "./Routes";
 
 class App extends Component {
