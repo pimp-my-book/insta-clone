@@ -27,7 +27,7 @@ class App extends Component {
         <ColorModeProvider>
             <Box display="flex" justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
               <Heading size="md" textAlign="center">
-                Insta-Clone
+                Insta-Clonec
                 <Link href="/" isInternal>
                   <span role="img" aria-label="Camera">📸</span>
                 </Link>

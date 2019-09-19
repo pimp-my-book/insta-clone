@@ -9,9 +9,9 @@ const CreatePost = ( ) => {
     const [ postedBy, setPostedBy ] = useState("");
     const [ caption, setCaption ] = useState("");
     const [ imageUrl, setImageUrl ] = useState("");
-    const [ state, setState ] = useState(null);
+    //const [ state, setState ] = useState(null);
     let [ file, setFile ] = useState(null);
-    const [ mutateCreatePost, { data } ] = useMutation(Create_Post);
+    //const [ mutateCreatePost, { data } ] = useMutation(Create_Post);
 
     const handleFileChange = event => {
         file = event.target.files[0];
@@ -28,7 +28,7 @@ const CreatePost = ( ) => {
             return;
         }
 
-        setState(true);
+        //setState(true);
 
         try {
             const attachment = file
@@ -36,10 +36,11 @@ const CreatePost = ( ) => {
             : null;
 
             setImageUrl(attachment)
+            alert(`${attachment} was sent to s3`)
         }
         catch (e) {
             alert(e);
-            setState(false)
+            //setState(false)
         }
     }
 
@@ -47,11 +48,15 @@ const CreatePost = ( ) => {
         return(
             <Box display="block" w="100%" pr="35%" pl="35%">
                 <Heading>Create Your Post</Heading>
-                    <FormControl size="md"
+                <Mutation mutation={Create_Post}>
+                    {(createPost, {data}) =>(
+
+<FormControl size="md"
                         onSubmit={
-                            async e => {
+                             e => {
                                 e.preventDefault();
-                                mutateCreatePost({ variables: {
+                                handleSubmit();
+                                createPost({ variables: {
                                     postedBy,
                                     caption,
                                     imageUrl
@@ -94,11 +99,14 @@ const CreatePost = ( ) => {
                             bg="Black"
                             color="White"
                             type="submit"
-                            isLoading={ state }
+                            //isLoading={ state }
                         >
                             Post
                         </Button>
                     </FormControl>
+                    )}
+                </Mutation>
+                    
             </Box>
         )
     }

@@ -4,11 +4,13 @@ import gql from 'graphql-tag';
 export const Create_Post = gql `
     mutation CreatePost(
         $caption: String!,
-        $imageUrl: String!
+        $imageUrl: String!,
+        $postedBy: String!
     ) {
         createPost(
             caption: $caption,
-            imageUrl: $imageUrl
+            imageUrl: $imageUrl,
+            postedBy: $postedBy
         ) {
             postId
             userId

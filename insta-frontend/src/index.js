@@ -48,8 +48,9 @@ const authLink = setContext(async (_, { headers }) => {
         }
 });
 
+//stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 const httpLink = createHttpLink({
-    uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
+    uri: 'http://localhost:4000/graphql'
 });
 
 const client = new ApolloClient({
