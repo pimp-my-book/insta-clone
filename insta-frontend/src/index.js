@@ -36,7 +36,6 @@ Amplify.configure({
     }
 });
 
-/*
 const stage = process.env.REACT_APP_STAGE === "prod";
 
 const authLink = setContext(async (_, { headers }) => {
@@ -59,15 +58,12 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
-<ApolloProvider client={ client }>
-</ApolloProvider>
-
-*/
-
 ReactDOM.render(
-    <Router>
-            <App />
-    </Router>,
+    <ApolloProvider client={ client }>
+        <Router>
+                <App />
+        </Router>
+    </ApolloProvider>,
     document.getElementById('root')
 );
 
