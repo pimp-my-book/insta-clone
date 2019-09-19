@@ -17,8 +17,8 @@ const CreatePost = ( ) => {
         alert("File added -_-")
     }
 
-    const handleSubmit = async event => {
-        event.preventDefault();
+    const handleSubmit = async e => {
+        //e.preventDefault();
 
         if ( file && file.size > config.MAX_ATTACHMENT_SIZE ) {
             alert(
@@ -42,8 +42,6 @@ const CreatePost = ( ) => {
             //setState(false)
         }
     }
-
-   
 
     return(
         <Box display="block" w="100%" pr="35%" pl="35%">
