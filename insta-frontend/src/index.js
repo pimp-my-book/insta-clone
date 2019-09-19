@@ -15,7 +15,7 @@ import * as serviceWorker from './serviceWorker';
 Amplify.configure({
     Auth: {
         mandatorySignIn: true,
-        region: config.cognito.REGION,
+        region: config.apiGateway.REGION,
         userPoolId: config.cognito.USER_POOL_ID,
         identityPoolId: config.cognito.IDENTITY_POOL_ID,
         userPoolWebClientId: config.cognito.APP_CLIENT_ID
@@ -36,6 +36,7 @@ Amplify.configure({
     }
 });
 
+/*
 const stage = process.env.REACT_APP_STAGE === "prod";
 
 const authLink = setContext(async (_, { headers }) => {
@@ -55,24 +56,19 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
     link: httpLink,
-    cache: new InMemoryCache(),
-    clientState: {
-        defaults: {},
-        resolvers: {}
-    },
-    onError: ({ networkError, graphQLErrors }) => {
-        console.log('graphQLErrors', graphQLErrors)
-        console.log('networkError', networkError)
-    }
+    cache: new InMemoryCache()
 });
+
+<ApolloProvider client={ client }>
+</ApolloProvider>
+
+*/
 
 ReactDOM.render(
     <Router>
-        <ApolloProvider client={ client }>
             <App />
-        </ApolloProvider>
     </Router>,
     document.getElementById('root')
-    );
+);
 
 serviceWorker.unregister();
