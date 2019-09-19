@@ -30,11 +30,11 @@ const CreatePost = ( ) => {
         }
         
     }
-
+    
     const handleSubmit = async e => {
         //e.preventDefault();
 
-        if ( file && file.size > config.MAX_ATTACHMENT_SIZE ) {
+        if ( file && file.size > config.s3.SIZE ) {
             alert(
                 `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE/1000000} MB.`
             );
