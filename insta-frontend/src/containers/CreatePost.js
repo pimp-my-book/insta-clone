@@ -6,12 +6,10 @@ import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } f
 import config from "../configs/config";
 
 const CreatePost = ( ) => {
-    const [ postedBy, setPostedBy ] = useState("");
     const [ caption, setCaption ] = useState("");
-    const [ imageUrl, setImageUrl ] = useState("/tasks.jpg");
-    //const [ state, setState ] = useState(null);
+    const [ postedBy, setPostedBy ] = useState("");
+    const [ imageUrl, setImageUrl ] = useState("");
     let [ file, setFile ] = useState(null);
-    //const [ mutateCreatePost, { data } ] = useMutation(Create_Post);
 
     const handleFileChange = event => {
         file = event.target.files[0];
