@@ -42,70 +42,58 @@ const CreatePost = ( ) => {
             //setState(false)
         }
     }
-
+    
     return(
         <Box display="block" w="100%" pr="35%" pl="35%">
             <Heading>Create Your Post</Heading>
-            <Mutation mutation={Create_Post}
-            variables={{
-                postedBy,
-                caption,
-                imageUrl}
-            }
-            >
-                {(createPost, {data}) =>(
-
-<FormControl size="md"
-                    onSubmit={
-                       async  e => {
-                            e.preventDefault();
-                            console.log('triggered')
-                            //handleSubmit();
-                         await createPost();
+                <Mutation
+                    variables={{
+                        caption,
+                        postedBy,
+                        imageUrl
                     }}
+                    mutation={ Create_Post }
                 >
-                    <FormLabel>Caption</FormLabel>
-                        <Input 
-                            type="text" 
-                            id="caption"
-                            value={ caption }
-                            onChange = { e => setCaption( e.target.value ) }
-                            aria-describedby="email-helper-text" />
-                    <FormHelperText id="caption-helper-text">
-                        Because words matter<span role="img" aria-label="Happy">😄</span>
-                    </FormHelperText>
-                    <FormLabel>Who are you?</FormLabel>
-                        <Input 
-                            type="text" 
-                            id="caption"
-                            value={ postedBy }
-                            onChange = { e => setPostedBy( e.target.value ) }
-                            aria-describedby="email-helper-text" />
-                    <FormHelperText id="caption-helper-text">
-                        Because words matter<span role="img" aria-label="Happy">😄</span>
-                    </FormHelperText>
-                        <Input
-                            type="file"
-                            id="postFile"
-                          //  onChange= { handleFileChange }
-                            aria-describedby="imageUrl-helper-text"
-                        />
-                    <FormHelperText id="password-helper-text">
-                        Hit here to blow up the world<span role="img" aria-label="Happy">😄</span>
-                    </FormHelperText>
-                    <Button
-                        mt={4}
-                        bg="Black"
-                        color="White"
-                        type="submit"
-                        //isLoading={ state }
+                {(createPost, {data}) =>(
+                    <form
+                        onSubmit={
+                            async e => {
+                                e.preventDefault();
+                                handleSubmit();
+                                await createPost()
+                            }
+                        }
                     >
-                        Post
-                    </Button>
-                </FormControl>
+                        <FormControl size="md">
+                            <FormLabel>Caption</FormLabel>
+                                <Input
+                                    type="text" 
+                                    id="caption"
+                                    value={ caption }
+                                    onChange = { e => setCaption( e.target.value ) }
+                                />
+                            <FormLabel>Who are you?</FormLabel>
+                                <Input 
+                                    type="text" 
+                                    id="caption"
+                                    value={ postedBy }
+                                    onChange = { e => setPostedBy( e.target.value ) }
+                                />
+                                <Input
+                                    type="file"
+                                    id="postFile"
+                                    onChange={ handleFileChange }
+                                />
+                            <Button
+                                type="submit"
+                                mt={4}
+                            >
+                                Post
+                            </Button>
+                        </FormControl>
+                    </form>
                 )}
-            </Mutation>
-                
+                </Mutation>
         </Box>
     )
 }
