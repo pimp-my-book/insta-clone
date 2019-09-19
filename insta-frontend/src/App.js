@@ -29,18 +29,17 @@ class App extends Component {
     return (
       <ThemeProvider>
         <ColorModeProvider>
-            <Box display="flex" justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
+            <Box display="flex" justifyContent="space-between" bg="Black" p={ 2 } color="white">
               <Heading size="md" textAlign="center">
-                Insta-Clonec
+                Insta-Clone
                 <Link href="/" isInternal>
                   <span role="img" aria-label="Camera">📸</span>
                 </Link>
               </Heading>
-              <Link href="/Register" isInternal>
-                <Button size="md" alignItems="right">
-                  Login | Register
-                </Button>
-              </Link>
+              {this.state.isAuthenticated
+                ? <Button onClick={ this.handleLogout } size="md" alignItems="right">Logout</Button>
+                : <Fragment><Link href="/Register" isInternal><Button size="md" alignItems="right">Login | Register</Button></Link></Fragment>
+              }
             </Box>
           <Routes childProps={ childProps }/>
         </ColorModeProvider>
