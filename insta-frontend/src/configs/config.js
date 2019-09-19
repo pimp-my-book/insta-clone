@@ -1,7 +1,8 @@
 const dev = {
     s3: {
         REGION: process.env.REACT_APP_REGION,
-        BUCKET: process.env.REACT_APP_S3_BCKT_DEV
+        BUCKET: process.env.REACT_APP_S3_BCKT_DEV,
+        SIZE: process.env.REACT_APP_S3_FILE_SIZE
     },
     apiGateway: {
         REGION: process.env.REACT_APP_REGION,
@@ -18,7 +19,8 @@ const dev = {
 const prod = {
     s3: {
         REGION: process.env.REACT_APP_REGION,
-        BUCKET: process.env.REACT_APP_S3_BCKT_PROD
+        BUCKET: process.env.REACT_APP_S3_BCKT_PROD,
+        SIZE: process.env.REACT_APP_S3_FILE_SIZE
     },
     apiGateway: {
         REGION: process.env.REACT_APP_REGION,
@@ -37,6 +39,5 @@ const config = process.env.REACT_APP_STAGE === "prod"
     : dev;
 
 export default {
-    MAX_ATTACHMENT_SIZE: 5000000,
     ...config
 };
