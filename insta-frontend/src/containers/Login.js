@@ -3,6 +3,7 @@ import Auth from "@aws-amplify/auth";
 import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from "@chakra-ui/core";
 import "../resources/styles/styles.css";
 
+const Login = () => {
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -63,3 +64,5 @@ import "../resources/styles/styles.css";
         </Box>
     )
 }
+
+export default Login
