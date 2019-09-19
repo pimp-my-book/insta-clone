@@ -11,10 +11,24 @@ const CreatePost = ( ) => {
     const [ imageUrl, setImageUrl ] = useState("");
     let [ file, setFile ] = useState(null);
 
-    const handleFileChange = event => {
-        file = event.target.files[0];
-        console.log(file)
-        alert("File added -_-")
+    const handleFileChange = async e => {
+        file = e.target.files[0];
+        console.log(file);
+        alert("File added :)")
+
+        try {
+            const attachment = file
+            ? await s3Upload(file)
+            : null;
+
+            setImageUrl(attachment)
+            alert(`${attachment} was sent to s3`)
+        }
+        catch (e) {
+            alert(e);
+            //setState(false)
+        }
+        
     }
 
     const handleSubmit = async e => {
