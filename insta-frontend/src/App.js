@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { ThemeProvider, ColorModeProvider } from "@chakra-ui/core";
 import { Link, Box, Heading, Button } from "@chakra-ui/core";
 import Routes from "./Routes";
