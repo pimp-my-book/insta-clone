@@ -5,10 +5,16 @@ export default class Home extends Component {
     render() {
         return(
             <div>
-                <Box w="100%">
+                <Box>
                     <Heading textAlign="center" size="md">
                         Insta-Clone
                     </Heading>
+                </Box>
+                <Box
+                    display="block"
+                    pr="45%"
+                    pl="45%"
+                >
                     <Link href="/CreatePost" isInternal>
                         <Button>
                             Create Post
