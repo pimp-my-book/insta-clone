@@ -1,11 +1,108 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import { s3Upload } from "../resources/libs/awsLib";
-import { Mutation } from "react-apollo";
-import { Create_Post } from "../graphql/Mutations";
+import { graphql, Mutation } from "react-apollo";
 import { Box, Heading, Input, Button, FormControl, FormLabel } from "@chakra-ui/core";
 import config from "../../src/config";
 
-const CreatePost = ( ) => {
+class CreatePost extends React.Component {
+    state = {
+        caption:"",
+        imageUrl:"",
+        postedBy:"",
+        file:null
+    }
+
+    render() {
+        return(
+            <Box display="block" w="100%" pr="35%" pl="35%">
+                <Heading>Create Your Post</Heading>
+                    <form>
+                        <FormControl size="md">
+                            <FormLabel>Caption</FormLabel>
+                                <Input
+                                    type="text" 
+                                    id="caption"
+                                    value={ caption }
+                                    onChange = { e => setCaption({ caption: e.target.value }) }
+                                />
+                            <FormLabel>Who are you?</FormLabel>
+                                <Input 
+                                    type="text" 
+                                    id="caption"
+                                    value={ postedBy }
+                                    onChange = { e => setState({ postedBy: e.target.value }) }
+                                />
+                                <Input
+                                    type="file"
+                                    accept="image/*"
+                                    id="postFile"
+                                    onChange={
+                                        (event) => {
+                                            this._uploadFile(event)
+                                        }
+                                    }
+                                    onClick={
+                                        (event) => {
+                                            event.target.value = null
+                                        }
+                                    }
+                                />
+                            <Button
+                                type="submit"
+                                mt={4}
+                            >
+                                Post
+                            </Button>
+                        </FormControl>
+                    </form>
+        </Box>
+        )
+    }
+
+    _uploadFile = (event) => {
+        const files = event.target.files
+        const file = file[0]
+        this.props.uploadMutation({
+            variables: {
+                file
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+        this.props.history.push(`/`)
+    }
+}
+
+const Create_Post = gql `
+    mutation CreatePost(
+        $caption: String!,
+        $imageUrl: String!,
+        $postedBy: String!
+    ) {
+        createPost(
+            caption: $caption,
+            imageUrl: $imageUrl,
+            postedBy: $postedBy
+        ) {
+            postId
+            userId
+            caption
+            dateUploaded
+            imageUrl
+        }
+    }
+`;
+
+const UploadFileWithMutation = graphql(
+    Create_Post, {
+        name: "CreatePost",
+        prop: this.props.uploadMutation...
+    }
+)
+
+/*
+const CreatePostV1 = ( ) => {
     const [ caption, setCaption ] = useState("");
     const [ postedBy, setPostedBy ] = useState("");
     const [ imageUrl, setImageUrl ] = useState("");
@@ -98,5 +195,6 @@ const CreatePost = ( ) => {
         </Box>
     )
 }
+*/
 
 export default CreatePost
