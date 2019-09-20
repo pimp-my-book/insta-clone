@@ -14,21 +14,7 @@ const CreatePost = ( ) => {
     const handleFileChange = async e => {
         file = e.target.files[0];
         console.log(file);
-        alert("File added :)")
-
-        try {
-            const attachment = file
-            ? await s3Upload(file)
-            : null;
-
-            setImageUrl(attachment)
-            alert(`${attachment} was sent to s3`)
-        }
-        catch (e) {
-            alert(e);
-            //setState(false)
-        }
-        
+        alert("File added :)")    
     }
     
     const handleSubmit = async e => {
@@ -47,8 +33,9 @@ const CreatePost = ( ) => {
             const attachment = file
             ? await s3Upload(file)
             : null;
-
-            setImageUrl(attachment)
+            
+            console.log(file);
+            console.log(attachment);
             alert(`${attachment} was sent to s3`)
         }
         catch (e) {
