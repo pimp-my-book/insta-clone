@@ -37,17 +37,19 @@ const Login = () => {
                                 id="email"
                                 value={ email }
                                 onChange = { e => setEmail( e.target.value ) }
-                                aria-describedby="email-helper-text" />
+                                aria-describedby="email-helper-text"
+                            />
                         <FormHelperText id="email-helper-text">
                             This is for your body<span role="img" aria-label="Happy">😄</span>
                         </FormHelperText>
                         <FormLabel>Password</FormLabel>
                             <Input 
-                            type="password" 
-                            id="password"
-                            value={ password } 
-                            onChange = { e => setPassword( e.target.value ) }
-                            aria-describedby="password-helper-text" />
+                                type="password" 
+                                id="password"
+                                value={ password } 
+                                onChange = { e => setPassword( e.target.value ) }
+                                aria-describedby="password-helper-text"
+                            />
                         <FormHelperText id="password-helper-text">
                             This is for your soul<span role="img" aria-label="Happy">😄</span>
                         </FormHelperText>
