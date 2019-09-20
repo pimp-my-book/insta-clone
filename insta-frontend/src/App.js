@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment} from "react";
 import { ThemeProvider, ColorModeProvider } from "@chakra-ui/core";
 import { Link, Box, Heading, Button } from "@chakra-ui/core";
 import Routes from "./Routes";
@@ -6,9 +6,9 @@ import Routes from "./Routes";
 class App extends Component {
   constructor(props) {
     super(props);
-  
+    
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
     };
   }
   
