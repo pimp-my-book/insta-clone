@@ -9,6 +9,7 @@ const Login = () => {
         event.preventDefault();
         try {
             await Auth.signIn(email, password);
+            //userHasAuthenticated(true);
             alert("Logged In")
         }
         catch (e) {
