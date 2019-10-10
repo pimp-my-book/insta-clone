@@ -43,20 +43,19 @@ const authLink = setContext(async (_, { headers }) => {
         return {
             headers: {
                 ...headers,
-                Authorization: token ? ` Bearer ${ token.idToken.jwtToken } ` : null
+                Authorization: token ? `Bearer ${ token.idToken.jwtToken }` : null
             }
         }
 });
 
 //stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/graphql'
+    uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 });
 
 const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache(),
-    connectToDevTools: true
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
 });
 
 ReactDOM.render(
