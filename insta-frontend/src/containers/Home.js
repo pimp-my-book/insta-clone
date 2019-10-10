@@ -1,14 +1,25 @@
 import React, { Component } from "react";
-import { Grid, Box, Heading } from "@chakra-ui/core";
+import { Box, Link, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from "@chakra-ui/core";
 
 export default class Home extends Component {
     render() {
         return(
             <div>
-                <Box w="100%">
+                <Box>
                     <Heading textAlign="center" size="md">
                         Insta-Clone
                     </Heading>
+                </Box>
+                <Box
+                    display="block"
+                    pr="45%"
+                    pl="45%"
+                >
+                    <Link href="/CreatePost" isInternal>
+                        <Button>
+                            Create Post
+                        </Button>
+                    </Link>
                 </Box>
             </div>
         )

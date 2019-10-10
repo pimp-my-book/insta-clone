@@ -1,4 +1,9 @@
 const dev = {
+    s3: {
+        REGION: process.env.REACT_APP_REGION,
+        BUCKET: process.env.REACT_APP_S3_BCKT_DEV,
+        SIZE: process.env.REACT_APP_S3_FILE_SIZE
+    },
     apiGateway: {
         REGION: process.env.REACT_APP_REGION,
         URL: process.env.REACT_APP_ENDPNT_DEV
@@ -12,6 +17,11 @@ const dev = {
 };
 
 const prod = {
+    s3: {
+        REGION: process.env.REACT_APP_REGION,
+        BUCKET: process.env.REACT_APP_S3_BCKT_PROD,
+        SIZE: process.env.REACT_APP_S3_FILE_SIZE
+    },
     apiGateway: {
         REGION: process.env.REACT_APP_REGION,
         URL: process.env.REACT_APP_ENDPNT_PROD

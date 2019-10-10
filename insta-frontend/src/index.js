@@ -1,7 +1,7 @@
 import React from 'react';
+import Amplify, { Auth } from 'aws-amplify';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
-import Amplify, { Auth } from 'aws-amplify';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-boost';
 import { createHttpLink } from 'apollo-link-http';
@@ -9,16 +9,21 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import './resources/styles/styles.css';
 import App from './App';
-import config from "./configs/config";
+import config from "./config";
 import * as serviceWorker from './serviceWorker';
 
 Amplify.configure({
     Auth: {
         mandatorySignIn: true,
-        region: config.cognito.REGION,
+        region: config.apiGateway.REGION,
         userPoolId: config.cognito.USER_POOL_ID,
         identityPoolId: config.cognito.IDENTITY_POOL_ID,
         userPoolWebClientId: config.cognito.APP_CLIENT_ID
+    },
+    Storage: {
+        region: config.s3.REGION,
+        bucket: config.s3.BUCKET,
+        identityPoolId: config.cognito.IDENTITY_POOL_ID
     },
     API: {
         endpoints: [
@@ -38,35 +43,28 @@ const authLink = setContext(async (_, { headers }) => {
         return {
             headers: {
                 ...headers,
-                Authorization: token ? ` Bearer ${ token.idToken.jwtToken } ` : null
+                Authorization: token ? `Bearer ${ token.idToken.jwtToken }` : null
             }
         }
 });
 
+//stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 const httpLink = createHttpLink({
     uri: stage ? process.env.REACT_APP_GRAPHQL_ENDPNT_PROD : process.env.REACT_APP_GRAPHQL_ENDPNT_DEV
 });
 
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-    clientState: {
-        defaults: {},
-        resolvers: {}
-    },
-    onError: ({ networkError, graphQLErrors }) => {
-        console.log('graphQLErrors', graphQLErrors)
-        console.log('networkError', networkError)
-    }
+    cache: new InMemoryCache()
 });
 
 ReactDOM.render(
-    <Router>
-        <ApolloProvider client={ client }>
-            <App />
-        </ApolloProvider>
-    </Router>,
+    <ApolloProvider client={ client }>
+        <Router>
+                <App />
+        </Router>
+    </ApolloProvider>,
     document.getElementById('root')
-    );
+);
 
 serviceWorker.unregister();

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment} from "react";
 import { ThemeProvider, ColorModeProvider } from "@chakra-ui/core";
 import { Link, Box, Heading, Button } from "@chakra-ui/core";
 import Routes from "./Routes";
@@ -6,14 +6,18 @@ import Routes from "./Routes";
 class App extends Component {
   constructor(props) {
     super(props);
-  
+    
     this.state = {
-      isAuthenticated: false
+      isAuthenticated: false,
     };
   }
   
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
+  }
+
+  handleLogout = event => {
+    this.userHasAuthenticated(false);
   }
   
   render() {
@@ -25,15 +29,17 @@ class App extends Component {
     return (
       <ThemeProvider>
         <ColorModeProvider>
-            <Box display="flex" justifyContent="space-between" bg="Black" w="100%" p={ 2 } color="white">
+            <Box display="flex" justifyContent="space-between" bg="Black" p={ 2 } color="white">
               <Heading size="md" textAlign="center">
-                Insta-Clone<span role="img" aria-label="Camera">📸</span>
+                Insta-Clone
+                <Link href="/" isInternal>
+                  <span role="img" aria-label="Camera">📸</span>
+                </Link>
               </Heading>
-              <Link href="/Register" isInternal>
-                <Button size="md" alignItems="right">
-                  Login | Register
-                </Button>
-              </Link>
+              {this.state.isAuthenticated
+                ? <Button onClick={ this.handleLogout } size="md" alignItems="right">Logout</Button>
+                : <Fragment><Link href="/Register" isInternal><Button size="md" alignItems="right">Login | Register</Button></Link></Fragment>
+              }
             </Box>
           <Routes childProps={ childProps }/>
         </ColorModeProvider>
