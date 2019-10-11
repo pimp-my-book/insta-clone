@@ -10,13 +10,16 @@ const CreatePost = ( ) => {
     const [ caption, setCaption ] = useState("");
     const [ postedBy, setPostedBy ] = useState("");
     const [ imageUrl, setImageUrl ] = useState("");
-    let [ file, setFile ] = useState(null);
+    let [ file ] = useState(null);
+    const [ setLoading ] = useState(null);
 
     const handleFileChange = async e => {
         file = e.target.files[0];
         console.log(file);
 
         try {
+            setLoading(true);
+
             const attachment = file
             ? await s3Upload(file)
             : null;
@@ -30,7 +33,7 @@ const CreatePost = ( ) => {
         }
         catch (e) {
             alert(e);
-            //setState(false)
+            setLoading(false)
         }
 
         alert("File added :)")  
@@ -45,7 +48,7 @@ const CreatePost = ( ) => {
             return;
         }
 
-        //setState(true);
+        setLoading(true);
     }
     
     return(
