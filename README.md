@@ -12,15 +12,15 @@ A fullstack Serverless GraphQL Instagram Clone  📸
 
 ### Tasks
 
-[ ] Draft up schema
-[ ] Spawn Backend + frontend repos
-[ ] Sketch out UI
-[ ] Setup Cognito + S3 BUCKETS
-[ ]  Set up Seed
-[ ] Setup backend Schema
+- [ ] Draft up schema
+- [ ] Spawn Backend + Frontend Repos
+- [ ] Sketch out UI
+- [ ] Setup Cognito + S3 BUCKETS
+- [ ]  Set up Seed
+- [ ] Setup backend Schema
 
 
--[ ] start with first mututaion on backend
+- [ ] start with first mututaion on backend
 - [ ] Do login on frontend
 - [ ] Do mutation on frontend
 
